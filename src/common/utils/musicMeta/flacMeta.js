@@ -59,7 +59,7 @@ const writeMeta = async(filePath, meta, picPath) => {
 
 module.exports = (filePath, meta) => {
   if (!meta.APIC) return writeMeta(filePath, meta)
-  let picUrl = meta.APIC
+  const picUrl = meta.APIC
   delete meta.APIC
   if (!/^http/.test(picUrl)) {
     return writeMeta(filePath, meta)
