@@ -23,10 +23,7 @@ module.exports = (filePath, meta) => {
   }
   let ext = path.extname(meta.APIC)
   let picPath = filePath.replace(/\.mp3$/, '') + (ext ? ext.replace(extReg, '$1') : '.jpg')
-
-  let picUrl = meta.APIC
-  if (picUrl.includes('music.126.net')) picUrl += `${picUrl.includes('?') ? '&' : '?'}param=500y500`
-  download(picUrl, picPath).then(success => {
+  download(meta.APIC, picPath).then(success => {
     if (success) {
       meta.APIC = picPath
       handleWriteMeta(meta, filePath)
